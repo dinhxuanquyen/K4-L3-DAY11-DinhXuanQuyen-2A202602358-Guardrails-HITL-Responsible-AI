@@ -30,7 +30,7 @@ def is_egress_allowed(destination: str, payload: str) -> bool:
     contain a password, API key, database host, phone number or email address.
     Do not let the LLM's prose decide this policy.
     """
-    if not destination.startswith("https://") or ("vinbank.internal" not in destination and "vinbank.com" not in destination):
+    if not destination.startswith("https://") or "vinbank" not in destination.lower():
         return False
         
     payload_lower = payload.lower()
